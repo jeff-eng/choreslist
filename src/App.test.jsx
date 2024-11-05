@@ -1,13 +1,15 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, beforeEach } from 'vitest';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 
 describe('App component', () => {
+  beforeEach(() => {
+    render(<App />);
+  });
+
   // Test that Choreslist heading exists
   it('should render Choreslist heading', () => {
-    render(<App />);
-
     const heading = screen.getByText(/choreslist/i);
 
     expect(heading).toBeInTheDocument();
@@ -15,8 +17,6 @@ describe('App component', () => {
 
   // Test that an input field is rendered in the document
   it('should render an input field (with placeholder text) to add a new chore', () => {
-    render(<App />);
-
     // Check for an input with placeholder text 'Do dishes'
     const input = screen.getByPlaceholderText(/Do dishes/i);
 
@@ -26,8 +26,6 @@ describe('App component', () => {
 
   // Test that a button to add a chore to the list is in the document
   it('should render a button that has "->" as text', () => {
-    render(<App />);
-
     // Check for button in the document
     const addButton = screen.getByRole('button', { name: '->' });
 
@@ -37,8 +35,6 @@ describe('App component', () => {
 
   // Test that a button to clear all chores is in the document
   it('should render a button with text "X" that clears all chores', () => {
-    render(<App />);
-
     // Check for button in the document
     const clearAllButton = screen.getByRole('button', { name: 'X' });
 
@@ -47,8 +43,6 @@ describe('App component', () => {
 
   // Test adding a new chore to the list
   it('should add a new chore to the list and clear input after adding chore', async () => {
-    render(<App />);
-
     // Get references to the input and submit button
     const input = screen.getByPlaceholderText(/Do dishes/i);
     const button = screen.getByRole('button', { name: '->' });
@@ -66,8 +60,6 @@ describe('App component', () => {
 
   // Clear all button
   it('no chores should be displayed after clicking clear all button', async () => {
-    render(<App />);
-
     const clearAllButton = screen.getByRole('button', { name: 'X' });
     const unorderedList = screen.getByRole('list');
 
@@ -80,8 +72,6 @@ describe('App component', () => {
   });
 
   it('should remove a chore when clicking on delete button for each chore', async () => {
-    render(<App />);
-
     // Simulate user behavior: enter input, add chore, then delete it
     const input = screen.getByPlaceholderText('Do dishes');
     fireEvent.input(input, { target: { value: 'Fold clothes' } });
