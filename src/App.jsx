@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Chore from './components/Chore';
 
 export default function App() {
   const [formData, setFormData] = useState({ chore: '' });
@@ -57,19 +58,12 @@ export default function App() {
       </form>
       <ul className="chores-list">
         {chores
-          ? chores.map((chore, index) => {
-              return (
-                <li key={`${chore}-${index}`}>
-                  {chore}
-                  <button
-                    type="button"
-                    onClick={() => handleDeleteClicked(chore)}
-                  >
-                    delete
-                  </button>
-                </li>
-              );
-            })
+          ? chores.map(chore => (
+              <Chore
+                description={chore}
+                handleDeleteClicked={handleDeleteClicked}
+              />
+            ))
           : null}
       </ul>
     </>
