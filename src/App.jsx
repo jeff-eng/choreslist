@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import Chore from './components/Chore';
+import { nanoid } from 'nanoid';
 
 export default function App() {
   const [formData, setFormData] = useState({ chore: '' });
@@ -60,6 +61,7 @@ export default function App() {
         {chores
           ? chores.map(chore => (
               <Chore
+                key={nanoid()}
                 description={chore}
                 handleDeleteClicked={handleDeleteClicked}
               />
