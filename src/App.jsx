@@ -1,10 +1,17 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import Chore from './components/Chore';
 import ChoreFormControls from './components/ChoreFormControls';
 
 export default function App() {
-  const [chores, setChores] = useState([]);
+  const [chores, setChores] = useState(() => {
+    const savedChores = localStorage.getItem('chores');
+    return savedChores ? JSON.parse(savedChores) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem('chores', JSON.stringify(chores));
+  }, [chores]);
 
   function updateChoresList(chore) {
     if (chore && !chores.includes(chore)) {
