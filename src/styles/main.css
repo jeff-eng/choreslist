@@ -1,0 +1,25 @@
+@import url('variables.css');
+
+/* CSS reset */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-color);
+  font-family: 'IBM Plex Mono', monospace;
+}
+
+button {
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.box-shadow {
+  box-shadow: 6px 3px 0px var(--button-text-color);
+}
