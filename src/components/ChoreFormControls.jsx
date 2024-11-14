@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import '../styles/chore-form-controls.css';
 
 export default function ChoreFormControls({
   updateChoresList,
@@ -25,16 +26,23 @@ export default function ChoreFormControls({
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="input-group" onSubmit={handleSubmit}>
       <input
         type="text"
+        className="input-group__input box-shadow"
         placeholder="Do dishes"
         onChange={handleInputChange}
         name="chore"
         value={formData.chore}
       />
-      <button type="submit">{'->'}</button>
-      <button type="button" onClick={handleClearAllButtonClicked}>
+      <button className="input-group__submit-button box-shadow" type="submit">
+        {'->'}
+      </button>
+      <button
+        className="input-group__clearall-button box-shadow"
+        type="button"
+        onClick={handleClearAllButtonClicked}
+      >
         {'X'}
       </button>
     </form>

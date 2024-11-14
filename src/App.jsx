@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import Chore from './components/Chore';
 import ChoreFormControls from './components/ChoreFormControls';
+import './styles/app.css';
 
 export default function App() {
   const [chores, setChores] = useState(() => {
@@ -34,7 +35,7 @@ export default function App() {
   }
 
   return (
-    <>
+    <main className="main-app-container">
       <h1 className="heading">Choreslist</h1>
       <ChoreFormControls
         updateChoresList={updateChoresList}
@@ -51,6 +52,6 @@ export default function App() {
             ))
           : null}
       </ul>
-    </>
+    </main>
   );
 }

@@ -1,0 +1,27 @@
+.heading {
+  font-weight: 700;
+  font-size: 4.375rem;
+  color: var(--button-color);
+  text-shadow: 6px 3px 0px var(--tertiary-color);
+  -webkit-text-stroke: 1px black;
+}
+
+.main-app-container {
+  max-width: 638px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  height: 100vh;
+  padding: 0.25em 0.5em;
+  gap: 1.5em;
+}
+
+.chores-list {
+  list-style: none;
+  padding: 2em 0;
+  width: 100%;
+  display: grid;
+  gap: 1em;
+  overflow: scroll;
+}
