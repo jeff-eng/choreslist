@@ -3,7 +3,7 @@
   text-align: center;
   border: 2px solid var(--button-text-color);
   text-transform: capitalize;
-  font-size: 1.875rem;
+  font-size: clamp(1rem, 5vw, 1.875rem);
   padding: 1em;
   align-content: center;
   width: 99%;
@@ -11,7 +11,7 @@
 
 .chores-list__delete-button {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 1rem;
+  font-size: clamp(0.3rem, 5vw, 1rem);
   margin-left: 1em;
   background-color: var(--button-color);
   visibility: hidden;
@@ -19,16 +19,19 @@
   border: 2px solid var(--button-text-color);
 }
 
-.chores-list__item:hover {
+.chores-list__item:hover,
+.chores-list__item:focus-visible {
   transform: translateY(-5px);
   outline: 5px solid var(--button-color);
   outline-offset: -5px;
 }
 
-.chores-list__item:hover .chores-list__delete-button {
+.chores-list__item:hover .chores-list__delete-button,
+.chores-list__item:focus-within .chores-list__delete-button {
   visibility: visible;
 }
 
-.chores-list__delete-button:hover {
+.chores-list__delete-button:hover,
+.chores-list__delete-button:focus-visible {
   background-color: var(--button-hover-color);
 }
