@@ -19,16 +19,19 @@
   border: 2px solid var(--button-text-color);
 }
 
-.chores-list__item:hover {
+.chores-list__item:hover,
+.chores-list__item:focus-visible {
   transform: translateY(-5px);
   outline: 5px solid var(--button-color);
   outline-offset: -5px;
 }
 
-.chores-list__item:hover .chores-list__delete-button {
+.chores-list__item:hover .chores-list__delete-button,
+.chores-list__item:focus-within .chores-list__delete-button {
   visibility: visible;
 }
 
-.chores-list__delete-button:hover {
+.chores-list__delete-button:hover,
+.chores-list__delete-button:focus-visible {
   background-color: var(--button-hover-color);
 }
