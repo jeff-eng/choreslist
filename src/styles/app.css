@@ -1,6 +1,6 @@
 .heading {
   font-weight: 700;
-  font-size: 4.375rem;
+  font-size: clamp(2rem, 8vw, 4.375rem);
   color: var(--button-color);
   text-shadow: 6px 3px 0px var(--tertiary-color);
   -webkit-text-stroke: 1px black;
