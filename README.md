@@ -29,7 +29,7 @@ TDD involves writing the tests first (and having the tests fail), followed by wr
 ### Demo
 
 <div style="display: flex; gap: 2em;">
-  <img src="./readme_assets/choreslist-demo.gif" alt="Recorded demo of app" style="max-height: 450px; object-fit: contain;" />
+  <img src="./readme_assets/choreslist-demo.gif" alt="Recorded demo of app" style="max-height: 300px; object-fit: contain;" />
 </div>
 
 ### Links
