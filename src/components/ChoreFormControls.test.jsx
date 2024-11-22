@@ -1,11 +1,15 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from '../App';
 
-describe('ChoreForm component', () => {
+describe('ChoreFormControls component', () => {
   beforeEach(() => {
     render(<App />);
+  });
+
+  afterEach(() => {
+    localStorage.clear();
   });
 
   it('should render an input field (with placeholder text) to add a new chore', () => {
@@ -46,6 +50,21 @@ describe('ChoreForm component', () => {
     expect(listItem).toBeInTheDocument();
 
     expect(input).toHaveValue('');
+  });
+
+  it('should not add clean floor and CLEAN FLOOR as separate chores', async () => {
+    const input = screen.getByPlaceholderText(/Do dishes/i);
+    const button = screen.getByRole('button', { name: '->' });
+    const unorderedList = screen.getByRole('list');
+
+    await userEvent.type(input, 'clean floor');
+    await userEvent.click(button);
+
+    await userEvent.type(input, 'CLEAN FLOOR');
+    await userEvent.click(button);
+
+    const listItems = unorderedList.querySelectorAll('li');
+    expect(listItems.length).toBe(1);
   });
 
   // Clear all button
