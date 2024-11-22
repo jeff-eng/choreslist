@@ -37,7 +37,7 @@ describe('App component', () => {
 
       // Assertion
       const savedChores = JSON.parse(localStorage.getItem('chores'));
-      expect(savedChores).toStrictEqual(expect.arrayContaining(['Mop floor']));
+      expect(savedChores).toStrictEqual(expect.arrayContaining(['mop floor']));
     });
 
     it('clears the chorelist', async () => {

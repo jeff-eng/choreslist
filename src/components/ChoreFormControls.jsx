@@ -19,7 +19,7 @@ export default function ChoreFormControls({
   function handleSubmit(event) {
     event.preventDefault();
 
-    updateChoresList(formData.chore);
+    updateChoresList(formData.chore.toLowerCase().trim());
 
     // Clear form input
     setFormData({ chore: '' });
