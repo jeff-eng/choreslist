@@ -12,7 +12,6 @@ describe('App component', () => {
 
   describe('Local storage', () => {
     beforeEach(() => {
-      // Resets mock before each test ensuring local storage is cleared
       localStorage.clear();
       vi.spyOn(window.localStorage.__proto__, 'setItem');
       vi.spyOn(window.localStorage.__proto__, 'getItem');
@@ -28,14 +27,12 @@ describe('App component', () => {
     it('should save new chores to local storage', async () => {
       render(<App />);
 
-      // Test adding new chore
       const input = screen.getByPlaceholderText('Do dishes');
       const addChoreButton = screen.getByRole('button', { name: '->' });
 
       await userEvent.type(input, 'Mop floor');
       await userEvent.click(addChoreButton);
 
-      // Assertion
       const savedChores = JSON.parse(localStorage.getItem('chores'));
       expect(savedChores).toStrictEqual(expect.arrayContaining(['mop floor']));
     });
